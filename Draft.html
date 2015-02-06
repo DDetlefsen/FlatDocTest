@@ -1,0 +1,455 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Spark Docs | Cloud code (API)</title>
+
+  <!-- jQuery -->
+  <script src="http://docs.spark.io/assets/js/jquery-1.11.1.min.js"></script>
+
+  <!-- Let me embed vines -->
+  <script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../assets/orange.ico" type="image/x-icon">
+
+  <!-- Vendor theme mods -->
+  <script src="http://docs.spark.io/assets/js/jquery-styling.js"></script>
+  <script src="http://docs.spark.io/assets/js/prettify.js"></script>
+  <!-- <script src='../assets/js/scrollspy.js'></script> -->
+
+  <!-- Spark theme mods -->
+  <link href="http://docs.spark.io/assets/css/style.css" rel="stylesheet">
+  <script src="http://docs.spark.io/assets/js/animated-core.js"></script>
+
+  <!-- Meta -->
+  <meta content="Spark" property="og:title">
+  <meta content="Documentation for Spark, a platform for connected devices." name="description">
+
+</head>
+<body role="flatdoc">
+
+  <div id="docs">
+    <div class="header">
+      <div class="left">
+        <a href="https://www.spark.io">
+          <img src="http://docs.spark.io/assets/images/spark-docs.png" id="logo">
+        </a>
+      </div>
+      <div class="right">
+        <a href="http://docs.spark.io/assets/docs.zip" class="icon"><i class="icon ion-arrow-down-a"></i></a>
+        <a href="http://www.github.com/spark/docs" class="icon"><i class="icon ion-social-github"></i></a>
+        <a href="https://github.com/spark/docs/edit/master/src/content/api.md" class="button">Edit this page</a>
+      </div>
+    </div>
+
+    <div class="content-root" data-spy="scroll" data-target="#toc">
+      <div class="menubar">
+        <div class="menu section" role="flatdoc-menu">
+          <ul>
+            
+              <li><a href="../start" class="level-0 active">Getting started</a></li>
+            
+              <li><a href="../avatars" class="level-0 ">Avatars</a></li>
+
+              <li><a href="../worlds" class="level-0 ">Worlds</a></li>
+            
+              <li><a href="../devices" class="level-0 ">Device Connections</a></li>
+            
+              <li><a href="../client_api" class="level-0">Client Applications</a></li>
+            
+          </ul>
+        </div>
+        <div class="menu section" role="flatdoc-menu">
+          <ul id="toc">
+          <li id="spark-cloud-api-item" class="level-1">
+            <a id="spark-cloud-api-link" href="#spark-cloud-api" class="level-1">Getting Started</a>
+          </li>
+
+          <li id="introduction-item" class="level-1">
+            <a id="introduction-link" href="#introduction" class="level-1">List Level-1</a>
+          </li>
+          <li id="introduction-list-devices-item" class="level-2">
+            <a id="introduction-list-devices-link" href="#introduction-list-devices" class="level-2">List Level-2</a>
+          </li>
+          <li id="authentication-how-to-send-your-access-token-item" class="level-3">
+            <a id="authentication-how-to-send-your-access-token-link" href="#authentication-how-to-send-your-access-token" class="level-3">List Level-3</a>
+          </li>
+          <li id="introduction-item" class="level-1">
+            <a id="introduction-link" href="#introduction" class="level-1">List Level-1</a>
+          </li>
+          <li id="introduction-list-devices-item" class="level-2">
+            <a id="introduction-list-devices-link" href="#introduction-list-devices" class="level-2">List Level-2</a>
+          </li>
+          <li id="authentication-how-to-send-your-access-token-item" class="level-3">
+            <a id="authentication-how-to-send-your-access-token-link" href="#authentication-how-to-send-your-access-token" class="level-3">List Level-3</a>
+          </li>
+        </ul>
+        </div>
+      </div>
+      <div role="flatdoc-content" class="content">
+        <h1 id="spark-cloud-api">Spark Cloud API</h1>
+<h1 id="introduction">Introduction</h1>
+<p>The Spark Cloud API is a <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a> API.
+REST means a lot of things, but first and foremost it means that we use the URL in the way that it&apos;s intended:
+as a &quot;Uniform Resource Locator&quot;.</p>
+<p>In this case, the unique &quot;resource&quot; in question is your Spark Core.
+Every Spark Core has a URL, which can be used to <code>GET</code> variables, <code>POST</code> a function call, or <code>PUT</code> new firmware. The variables and functions that you have written in your firmware are exposed as <em>subresources</em> within the Spark Core.</p>
+<p>All requests to the Spark Core come through our API server using TLS security.</p>
+<pre><code>PROTOCOL AND HOST
+https://api.spark.io</code></pre>
+<p>There are a number of API calls available, which are summarized here, and described in more detail below.</p>
+<h2 id="introduction-list-devices">List devices</h2>
+<p>List devices the currently authenticated user has access to.</p>
+<pre><code>GET /v1/devices</code></pre>
+<h2 id="introduction-device-information">Device information</h2>
+<p>Get basic information about the given Core, including the custom variables and functions it has exposed.</p>
+<pre><code>GET /v1/devices/{DEVICE_ID}</code></pre>
+<p>Update the Core, including the display name or the firmware (either binary or source).</p>
+<pre><code>PUT /v1/devices/{DEVICE_ID}</code></pre>
+<h2 id="introduction-requesting-a-variable-value">Requesting a variable value</h2>
+<p>Request the current value of a variable exposed by the core,
+e.g., <code>GET /v1/devices/0123456789abcdef01234567/temperature</code></p>
+<pre><code>GET /v1/devices/{DEVICE_ID}/{VARIABLE}</code></pre>
+<h2 id="introduction-calling-a-function">Calling a function</h2>
+<p>Call a function exposed by the core, with arguments passed in request body,
+e.g., <code>POST /v1/devices/0123456789abcdef01234567/brew</code></p>
+<pre><code>POST /v1/devices/{DEVICE_ID}/{FUNCTION}</code></pre>
+<p>Open a stream of <a href="http://www.w3.org/TR/eventsource/">Server-Sent Events</a></p>
+<pre><code>GET /v1/events[/:event_name]
+GET /v1/devices/events[/:event_name]
+GET /v1/devices/{DEVICE_ID}/events[/:event_name]</code></pre>
+<h2 id="introduction-authentication">Authentication</h2>
+<p>Just because you&apos;ve connected your Spark Core to the internet doesn&apos;t mean anyone else should have access to it.
+Permissions for controlling and communciating with your Spark Core are managed with OAuth2.</p>
+<pre><code class="language-bash"><span class="comment"># You type in your terminal</span>
+curl https://api.spark.io/v1/devices/<span class="number">0123456789</span>abcdef01234567/brew \
+     <span class="operator">-d</span> access_token=<span class="number">9876987698769876987698769876987698769876</span>
+<span class="comment"># Response status is 200 OK, which means</span>
+<span class="comment"># the Core says, &quot;Yes ma&apos;am!&quot;</span>
+
+<span class="comment"># Sneaky Pete tries the same thing in his terminal</span>
+curl https://api.spark.io/v1/devices/<span class="number">0123456789</span>abcdef01234567/brew \
+     <span class="operator">-d</span> access_token=<span class="number">1234123412341234123412341234123412341234</span>
+<span class="comment"># Response status is 403 Forbidden, which means</span>
+<span class="comment"># the Core says, &quot;You ain&apos;t the boss of me.&quot;</span>
+
+<span class="comment"># LESSON: Protect your access token.</span></code></pre>
+<p>Your access token can be found in the Spark Build web IDE on the &apos;Settings&apos; page.</p>
+<p><a href="https://www.spark.io/build">Spark Build &gt;</a></p>
+<p>When you connect your Spark Core to the Cloud for the first time, it will be associated with your account,
+and only you will have permission to control your Spark Core&#x2014;using your access token.</p>
+<p>If you need to transfer ownership of the core to another user, the easiest way is to simply log into the <a href="https://www.spark.io/build">Spark build site</a>, click on the &apos;cores&apos; drawer on the bottom left, and then click the small &apos;right arrow&apos; by the core you want to release, then click &quot;Remove Core&quot;. This will make it possible for the other person you are transfering the core to, to go through the normal <a href="/#/connect/claiming-your-core">claiming process</a>.</p>
+<p>In the future, you will be able to provision access to your Spark Core to other accounts
+and to third-party app developers; however, these features are not yet available.</p>
+<h3 id="authentication-how-to-send-your-access-token">How to send your access token</h3>
+<p>There are three ways to send your access token in a request.</p>
+<ul>
+<li>In an HTTP Authorization header (always works)</li>
+<li>In the URL query string (only works with GET requests)</li>
+<li>In the request body (only works for POST &amp; PUT when body is URL-encoded)</li>
+</ul>
+<p>In these docs, you&apos;ll see example calls written using a terminal program called
+<a href="http://curl.haxx.se/">curl</a>
+which may already be available on your machine.</p>
+<p>Example commands will always start with <code>curl</code>.</p>
+<hr>
+<p>To send a custom header using curl, use you the <code>-H</code> flag.
+The access token is called a &quot;Bearer&quot; token and goes in the standard
+HTTP <code>Authorization</code> header.</p>
+<pre><code>curl -H &quot;Authorization: Bearer 38bb7b318cc6898c80317decb34525844bc9db55&quot;
+  https://...</code></pre>
+<hr>
+<p>The query string is the part of the URL after a <code>?</code> question mark.
+To send the access token in the query string just add <code>access_token=38bb...</code>.
+Because your terminal thinks the question mark is special, we escape it with a backslash.</p>
+<pre><code>curl https://api.spark.io/v1/devices\?access_token=38bb7b318cc6898c80317decb34525844bc9db55</code></pre>
+<hr>
+<p>The request body is how form contents are submitted on the web.
+Using curl, each parameter you send, including the access token is preceded by a <code>-d</code> flag.
+By default, if you add a <code>-d</code> flag, curl assumes that the request is a POST.
+If you need a different request type, you have to specifically say so with the <code>-X</code> flag,
+for example <code>-X PUT</code>.</p>
+<pre><code>curl -d access_token=38bb7b318cc6898c80317decb34525844bc9db55
+  https://...</code></pre>
+<h3 id="authentication-generate-a-new-access-token">Generate a new access token</h3>
+<pre><code>POST /oauth/token
+
+# Using curl in your terminal
+curl https://api.spark.io/oauth/token -u spark:spark \
+     -d grant_type=password -d username=joe@example.com -d password=SuperSecret
+
+# A typical JSON response will look like this
+{
+    &quot;access_token&quot;: &quot;254406f79c1999af65a7df4388971354f85cfee9&quot;,
+    &quot;token_type&quot;: &quot;bearer&quot;,
+    &quot;expires_in&quot;: 7776000
+}</code></pre>
+<p>When creating a new access token, you need to specify several additional pieces of info.</p>
+<p>You must give a valid client ID and password in HTTP Basic Auth.
+Any client ID will work right now, so we suggest <code>spark:spark</code>.
+In the POST body, you need three parameters:</p>
+<ul>
+<li>grant_type=password</li>
+<li>username=YOUR_EMAIL@ADDRE.SS</li>
+<li>password=YOUR_PASSWORD</li>
+</ul>
+<p>For now, Spark Build will list the single most recently created token.</p>
+<h3 id="authentication-list-all-your-tokens">List all your tokens</h3>
+<pre><code>GET /v1/access_tokens
+
+# Using curl in your terminal
+curl https://api.spark.io/v1/access_tokens -u joe@example.com:SuperSecret
+
+# Example JSON response
+[
+    {
+        &quot;token&quot;: &quot;b5b901e8760164e134199bc2c3dd1d228acf2d98&quot;,
+        &quot;expires_at&quot;: &quot;2014-04-27T02:20:36.177Z&quot;,
+        &quot;client&quot;: &quot;spark&quot;
+    },
+    {
+        &quot;token&quot;: &quot;ba54b6bb71a43b7612bdc7c972914604a078892b&quot;,
+        &quot;expires_at&quot;: &quot;2014-04-27T06:31:08.991Z&quot;,
+        &quot;client&quot;: &quot;spark&quot;
+    }
+]</code></pre>
+<p>You can list all your access tokens by passing your email address and password
+in an HTTP Basic Auth header to <code>/v1/access_tokens</code>.</p>
+<h3 id="authentication-deleting-an-access-token">Deleting an access token</h3>
+<pre><code>DELETE /v1/access_tokens/:token
+
+# Using curl in your terminal
+curl https://api.spark.io/v1/access_tokens/b5b901e8760164e134199bc2c3dd1d228acf2d98 \
+     -u joe@example.com:SuperSecret -X DELETE
+
+# Example JSON response
+{
+    &quot;ok&quot;: true
+}</code></pre>
+<p>If you have a bunch of unused tokens and want to clean up, you can delete tokens.</p>
+<p>Just as for listing them, send your username and password in an HTTP Basic Auth header.</p>
+<h2 id="introduction-errors">Errors</h2>
+<p>The Spark Cloud uses traditional HTTP response codes to provide feedback from the Core regarding the validity
+of the request and its success or failure. As with other HTTP resources, response codes in the 200 range
+indicate success; codes in the 400 range indicate failure due to the information provided;
+codes in the 500 range indicate failure within Spark&apos;s server infrastructure.</p>
+<pre><code>200 OK - API call successfully delivered to the Core and executed.
+
+400 Bad Request - Your request is not understood by the Core,
+    or the requested subresource (variable/function) has not been exposed.
+
+401 Unauthorized - Your access token is not valid.
+
+403 Forbidden - Your access token is not authorized to interface with this Core.
+
+404 Not Found - The Core you requested is not currently connected to the cloud.
+
+408 Timed Out - The cloud experienced a significant delay when trying to reach the Core.
+
+500 Server errors - Fail whale. Something&apos;s wrong on our end.</code></pre>
+<h2 id="introduction-versioning">Versioning</h2>
+<p>The API endpoints all start with <code>/v1</code> to represent the first official version of the Spark Cloud API.
+The existing API is stable, and we may add new endpoints with the <code>/v1</code> prefix.</p>
+<p>If in the future we make backwards-incompatible changes to the API, the new endpoints will start with
+something different, probably <code>/v2</code>.  If we decide to deprecate any <code>/v1</code> endpoints,
+we&apos;ll give you lots of notice and a clear upgrade path.</p>
+<h1 id="basic-functions">Basic functions</h1>
+<h2 id="basic-functions-controlling-a-core">Controlling a Core</h2>
+<p>To control a Core, you must first define and expose <em>functions</em> in the Core firmware.
+You then call these functions remotely using the Spark Cloud API. </p>
+<p>Note: If you have declared a function name longer than 12 characters it <em>will be truncated</em> to 12 characters. Example: Spark.function(&quot;someFunction1&quot;, ...); exposes a function called <strong>someFunction</strong> and <em>not</em> <strong>someFunction1</strong></p>
+<pre><code class="language-cpp"><span class="comment">/* FIRMWARE */</span>
+<span class="keyword">int</span> brew(String args)
+{
+  <span class="comment">// parse brew temperature and duration from args</span>
+  <span class="comment">// ...</span>
+
+  activate_heating_element(temperature);
+  start_water_pump(duration_seconds);
+
+  <span class="comment">// int status_code = ...</span>
+  <span class="keyword">return</span> status_code;
+}</code></pre>
+<hr>
+<p>Let&apos;s say, as an example, you create a Spark-powered coffeemaker.
+Within the firmware, we might expect to see something like this brew function.</p>
+<pre><code class="language-cpp"><span class="comment">/* FIRMWARE */</span>
+<span class="keyword">void</span> setup()
+{
+  Spark.function(<span class="string">&quot;brew&quot;</span>, brew);
+}</code></pre>
+<p>In a normal coffeemaker, <code>brew</code> might be called when a button on the front of the coffeemaker is pressed.</p>
+<p>To make this function available through the Spark Cloud, simply add a <code>Spark.function</code> call to your <code>setup()</code>.</p>
+<hr>
+<p>This <em>exposes</em> the brew function so that it can be called through the API. When this code is present in the firmware, you can make this API call.</p>
+<pre><code class="language-bash">POST /v1/devices/{DEVICE_ID}/{FUNCTION}
+
+<span class="comment"># EXAMPLE REQUEST</span>
+curl https://api.spark.io/v1/devices/<span class="number">0123456789</span>abcdef01234567/brew \
+     <span class="operator">-d</span> access_token=<span class="number">1234123412341234123412341234123412341234</span> \
+     <span class="operator">-d</span> <span class="string">&quot;args=202,230&quot;</span></code></pre>
+<hr>
+<p>The API request will be routed to the Spark Core and will run your <code>brew</code> function. The response will have a <code>return_value</code> key containing the integer returned by <code>brew</code>.</p>
+<pre><code class="language-json">// EXAMPLE RESPONSE
+{
+  &quot;id&quot;: &quot;0123456789abcdef01234567&quot;,
+  &quot;name&quot;: &quot;prototype99&quot;,
+  &quot;connected&quot;: true,
+  &quot;return_value&quot;: 42
+}</code></pre>
+<p>All Spark functions take a String as the only argument and must return a 32-bit integer.
+The maximum length of the argument is 63 characters.</p>
+<h2 id="basic-functions-reading-data-from-a-core">Reading data from a Core</h2>
+<h3 id="reading-data-from-a-core-variables">Variables</h3>
+<p>Imagine you have a temperature sensor attached to the A0 pin of your Spark Core
+and your firmware has exposed the value of the sensor as a Spark variable.</p>
+<pre><code class="language-cpp"><span class="comment">/* FIRMWARE */</span>
+<span class="keyword">int</span> temperature = <span class="number">0</span>;
+
+<span class="keyword">void</span> setup()
+{
+  Spark.variable(<span class="string">&quot;temperature&quot;</span>, &amp;temperature, INT);
+  pinMode(A0, INPUT);
+}
+
+<span class="keyword">void</span> loop()
+{
+  temperature = analogRead(A0);
+}</code></pre>
+<hr>
+<p>You can now make a <code>GET</code> request, even with your browser, to read the sensor at any time.
+The API endpoint is <code>/v1/devices/{DEVICE_ID}/{VARIABLE}</code> and as always, you have to include your access token.</p>
+<pre><code class="language-bash"><span class="comment"># EXAMPLE REQUEST IN TERMINAL</span>
+<span class="comment"># Core ID is 0123456789abcdef01234567</span>
+<span class="comment"># Your access token is 1234123412341234123412341234123412341234</span>
+curl <span class="string">&quot;https://api.spark.io/v1/devices/0123456789abcdef01234567/temperature?access_token=1234123412341234123412341234123412341234&quot;</span></code></pre>
+<p>And the response contains a <code>result</code> like this:</p>
+<pre><code class="language-json">// EXAMPLE RESPONSE
+{
+  &quot;cmd&quot;: &quot;VarReturn&quot;,
+  &quot;name&quot;: &quot;temperature&quot;,
+  &quot;result&quot;: 42,
+  &quot;coreInfo&quot;: {
+    &quot;last_app&quot;: &quot;&quot;,
+    &quot;last_heard&quot;: &quot;2014-08-22T22:33:25.407Z&quot;,
+    &quot;connected&quot;: true,
+    &quot;deviceID&quot;: &quot;53ff6c065075535119511687&quot;
+  }</code></pre>
+<p><strong>NOTE</strong>: Variable names are truncated after the 12th character: <code>temperature_sensor</code> is accessible as <code>temperature_</code></p>
+<h3 id="reading-data-from-a-core-events">Events</h3>
+<h4 id="registering-a-callback">Registering a callback</h4>
+<p>In the build section of the Spark website, you will be able to register a URL on your own server
+to which we will POST each time one of your Spark Cores publishes a certain event. <em>This feature is still in progress, and will be released later in March.</em></p>
+<h4 id="subscribing-to-events">Subscribing to events</h4>
+<p>You can make an API call that will open a stream of
+<a href="http://www.w3.org/TR/eventsource/">Server-Sent Events</a> (SSEs).
+You will make one API call that opens a connection to the Spark Cloud.
+That connection will stay open, unlike normal HTTP calls which end quickly.
+Very little data will come to you across the connection unless your Spark Core publishes an event,
+at which point you will be immediately notified.</p>
+<p>To subscribe to an event stream, make a GET request to one of the following endpoints.
+This will open a Server-Sent Events (SSE) stream, i.e., a TCP socket that stays open.
+In each case, the event name filter in the URI is optional.  When specifying an event name filter,
+published events will be limited to those events with names that begin with the specified string.
+For example, specifying an event name filter of &apos;temp&apos; will return events with names &apos;temp&apos; and 
+&apos;temperature&apos;. </p>
+<p>SSE resources:</p>
+<ul>
+<li><a href="http://dev.w3.org/html5/eventsource/">http://dev.w3.org/html5/eventsource/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Server-sent_events/Using_server-sent_events">https://developer.mozilla.org/en-US/docs/Server-sent_events/Using_server-sent_events</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/eventsource/basics/">http://www.html5rocks.com/en/tutorials/eventsource/basics/</a></li>
+</ul>
+<hr>
+<p>Subscribe to the firehose of public events, plus private events published by devices one owns:</p>
+<pre><code>GET /v1/events[/:event_name]
+
+# EXAMPLE
+curl -H &quot;Authorization: Bearer 38bb7b318cc6898c80317decb34525844bc9db55&quot;
+https://api.spark.io/v1/events/temperature</code></pre>
+<hr>
+<p>Subscribe to all events, public and private, published by devices one owns:</p>
+<pre><code>GET /v1/devices/events[/:event_name]
+
+# EXAMPLE
+curl -H &quot;Authorization: Bearer 38bb7b318cc6898c80317decb34525844bc9db55&quot;
+https://api.spark.io/v1/devices/events/temperature</code></pre>
+<hr>
+<p>Subscribe to events from one specific device.
+If the API user owns the device, then she will receive all events,
+public and private, published by that device.
+If the API user does not own the device she will only receive public events.</p>
+<pre><code>GET /v1/devices/:device_id/events[/:event_name]
+
+# EXAMPLE
+curl -H &quot;Authorization: Bearer 38bb7b318cc6898c80317decb34525844bc9db55&quot;
+https://api.spark.io/v1/devices/55ff70064939494339432586/events/temperature</code></pre>
+<h2 id="basic-functions-verifying-and-flashing-new-firmware">Verifying and Flashing new firmware</h2>
+<p>All your Spark firmware coding can happen entirely in the build section of the website.
+However, if you prefer to use your own text editor or IDE, you can!
+It just means that instead of hitting the &quot;Flash&quot; or &quot;Verify&quot; buttons, you&apos;ll make API calls that reference a file.</p>
+<h3 id="verifying-and-flashing-new-firmware-flash-a-core-with-source-code">Flash a Core with source code</h3>
+<p>If you have written a source code file that defines <code>setup()</code> and <code>loop()</code> functions,
+you can flash it to your Spark Core with an HTTP PUT request.</p>
+<pre><code># HTTP REQUEST DEFINITION
+PUT /v1/devices/{DEVICE_ID}
+Content-Type: multipart/form-data
+
+Send the source code file as &quot;file&quot; in request body.</code></pre>
+<hr>
+<p>The API request should be encoded as <code>multipart/form-data</code> with a <code>file</code> field populated.
+Your filename does not matter.  In particular, the extension can be .c, .cpp, .ino, or anything else your prefer.</p>
+<p>This API request will submit your firmware to be compiled into a Spark binary, after which,
+if compilation was successful, the binary will be flashed to your Core wirelessly.</p>
+<pre><code class="language-bash"><span class="comment"># EXAMPLE REQUEST IN TERMINAL</span>
+<span class="comment"># Flash a Core with a file called &quot;my-firmware-app.cpp&quot;</span>
+curl -X PUT -F file=@my-firmware-app.cpp \
+  <span class="string">&quot;https://api.spark.io/v1/devices/0123456789abcdef01234567?access_token=1234123412341234123412341234123412341234&quot;</span></code></pre>
+<hr>
+<p>There are three possible response formats:</p>
+<ul>
+<li>A successful response, in which both compilation and flashing succeed.<ul>
+<li>Note that the LED on your Core will blink magenta while updating.</li>
+</ul>
+</li>
+<li>A failure due to compilation errors.</li>
+<li>A failure due to inability to transmit the binary to the core.</li>
+</ul>
+<pre><code class="language-js"><span class="comment">// EXAMPLE SUCCESSFUL RESPONSE</span>
+{
+  <span class="string">&quot;ok&quot;</span>: <span class="literal">true</span>,
+  <span class="string">&quot;firmware_binary_id&quot;</span>: <span class="string">&quot;12345&quot;</span>
+}</code></pre>
+<pre><code class="language-js"><span class="comment">// EXAMPLE COMPILE FAILURE RESPONSE</span>
+{
+  <span class="string">&quot;ok&quot;</span>: <span class="literal">false</span>,
+  <span class="string">&quot;errors&quot;</span>: [<span class="string">&quot;Compile error&quot;</span>],
+  <span class="string">&quot;output&quot;</span>: <span class="string">&quot;.... lots of debug output from the compiler...&quot;</span>
+}</code></pre>
+<pre><code class="language-js"><span class="comment">// EXAMPLE FLASH FAILURE RESPONSE</span>
+{
+  <span class="string">&quot;ok&quot;</span>: <span class="literal">false</span>,
+  <span class="string">&quot;firmware_binary_id&quot;</span>: <span class="string">&quot;1234567&quot;</span>,
+  <span class="string">&quot;errors&quot;</span>: [<span class="string">&quot;Device is not connected.&quot;</span>]
+}</code></pre>
+<h3 id="verifying-and-flashing-new-firmware-flash-a-core-with-a-pre-compiled-binary">Flash a Core with a pre-compiled binary</h3>
+<p>If you want to compile the firmware yourself and send a binary instead of a source file, you can do that too!
+Just add <code>file_type=binary</code> to the request body, and we will skip the compilation stage altogether.
+The response format will look like those shown above.</p>
+<pre><code class="language-bash"><span class="comment"># EXAMPLE REQUEST IN TERMINAL TO FLASH A BINARY</span>
+curl -X PUT -F file=@my-firmware-app.bin -F file_<span class="built_in">type</span>=binary \
+  <span class="string">&quot;https://api.spark.io/v1/devices/0123456789abcdef01234567?access_token=1234123412341234123412341234123412341234&quot;</span></code></pre>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom -->
+  <script src="../assets/js/docs.js"></script>
+
+</body>
+</html>
