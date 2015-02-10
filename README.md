@@ -10,16 +10,54 @@ Accept: application/json; charset=utf-8
 Content-Type: application/json; charset=utf-8
 </pre></code>
 
-Parameters
-| Parameter 	| Where Used 	| Requirement 	| Notes                                                                                                                                                                                                                     	|
-|-----------	|------------	|-------------	|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| email     	| Payload    	| mandatory   	| email must be provided to uniquely identify the account must meet minimum email format requirements according to RFC                                                                                                      	|
-| password  	| Payload    	| mandatory   	| alphanumeric string (a-z, 0-9) case sensitive must contain one upper case letter must contain one lower case letter must contain one number must contain one special character minimum 8 characters maximum 16 characters 	|
-| token     	| Response   	|             	| the access token providing authentication for the user specified in the message payload                                                                                                                                   	|
-| href      	| Response   	|             	| the URI of the associated user                                                                                                                                                                                            	|
-| expires   	| Response   	|             	| the time when the issued authentication token will expire   
+# Authentication Token Parameters
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-e3zv{font-weight:bold}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-e3zv">Parameter</th>
+    <th class="tg-e3zv">Where Used</th>
+    <th class="tg-e3zv">Requirement</th>
+    <th class="tg-e3zv">Notes</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">email</td>
+    <td class="tg-031e">POST Payload</td>
+    <td class="tg-031e">mandatory</td>
+    <td class="tg-031e">email must be provided to uniquely identify the account<br>must meet minimum email format requirements according to RFC</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">password</td>
+    <td class="tg-031e">POST Payload</td>
+    <td class="tg-031e">mandatory</td>
+    <td class="tg-031e">alphanumeric string (a-z, 0-9)<br>case sensitive<br>must contain one upper case letter<br>must contain one lower case letter<br>must contain one number<br>must contain one special character<br>minimum 8 characters<br>maximum 16 characters</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">token</td>
+    <td class="tg-031e">Response</td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e">the access token providing authentication for the user specified in the message payload</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">href</td>
+    <td class="tg-031e">Response</td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e">the URI of the associated user</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">expires</td>
+    <td class="tg-031e">Response</td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e">the time when the issued authentication token will expire</td>
+  </tr>
+</table>
 
-Creating a new authentication token<pre><code>POST https://api.zatar.com/v1/authentokens
+
+Creating a new authentication token <pre><code>POST https://api.zatar.com/v1/authentokens
 //Example payload
 {
    "email":"username@zatar.com",
