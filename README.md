@@ -80,8 +80,7 @@ Date: Thu, 4 Jun 2013 18:00:00 GMT
 <span class="comment">//Sample payload</span>
 none
 </code></pre>
-<hr>
-<p>A successful request will provide a 201 response.</p>
+<hr><p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
 HTTP/1.1 200 OK
 Cache-Control: no-cache, no-store
@@ -96,8 +95,7 @@ none
 
 <h2 id="client-application-invitation-tokens">Invitation Tokens</h2>
 <p>Invitation tokens allow a user to invite other users to join their home world and share information. This service can also verify whether or not a previously generated invite token has expired.</p>
-<hr>
-<p>Create a new invitation token by doing an HTTP POST.</p>
+<hr><p>Create a new invitation token by doing an HTTP POST.</p>
 <pre><code>POST ../v1/invitetokens?token=YOUR_USER_TOKEN
 
 <span class="comment">//Sample payload
