@@ -40,8 +40,7 @@ codes in the 500 range indicate failure within Zatar&apos;s server infrastructur
 
 <h2 id="client-application-authorization-tokens">Authentication Tokens</h2>
 <p>This service will authenticate an existing Zatar user and return an access token. This access token is required in requests to access resources associated with a user account. This service can also verify whether or not a provided access token has expired.</p>
-<hr>
-<p>Create a new authentication token by doing an HTTP POST.</p>
+<hr><p>Create a new authentication token by doing an HTTP POST.</p>
 <pre><code>POST ../v1/authentokens
 
 <span class="comment">//Sample payload
@@ -52,8 +51,7 @@ codes in the 500 range indicate failure within Zatar&apos;s server infrastructur
    "password":"ZatarTeam&1"
 }
 </code></pre>
-<hr>
-<p>A successful request will provide a 201 response.</p>
+<hr><p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
 HTTP/1.1 201 Created
 Cache-Control: no-cache, no-store
@@ -73,8 +71,7 @@ Date: Thu, 4 Jun 2013 18:00:00 GMT
    "expires":"1370412000",
 }
 </code></pre>
-<hr>
-<p>Verify that a token is valid by performing an HTTP GET.</p>
+<hr><p>Verify that a token is valid by performing an HTTP GET.</p>
 <pre><code>GET ../v1/authentokens/YOUR_AUTHENTICATION_TOKEN
 
 <span class="comment">//Sample payload</span>
@@ -106,8 +103,7 @@ none
    "world": "https://api.zatar.com/v1/worlds/1234567890ABCDEF"
 }
 </code></pre>
-<hr>
-<p>A successful request will provide a 201 response.</p>
+<hr><p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
 201 Created
 Content-Type: application/json; charset=utf-8
@@ -124,15 +120,13 @@ Location: https://api.zatar.com/v1/invitetokens/2G03MOD1J6ENBZ1H
    "token":"05fc0f77-3c2f-4565-88a4-8bb340b2427z"
 }
 </code></pre>
-<hr>
-<p>Verify that an invitation token is valid by performing an HTTP GET.</p>
+<hr><p>Verify that an invitation token is valid by performing an HTTP GET.</p>
 <pre><code>GET ../v1/authentokens/{YOUR AUTHENTICATION TOKEN}
 
 <span class="comment">//Sample payload</span>
 none
 </code></pre>
-<hr>
-<p>A successful request will provide a 201 response.</p>
+<hr><p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
