@@ -96,13 +96,6 @@ none
 
 <h2 id="client-application-invitation-tokens">Invitation Tokens</h2>
 <p>Invitation tokens allow a user to invite other users to join their home world and share information. This service can also verify whether or not a previously generated invite token has expired.</p>
-
-
-
-
-
-
-
 <hr>
 <p>Create a new invitation token by doing an HTTP POST.</p>
 <pre><code>POST ../v1/invitetokens?token=YOUR_USER_TOKEN
@@ -115,6 +108,24 @@ none
    "world": "https://api.zatar.com/v1/worlds/1234567890ABCDEF"
 }
 </code></pre>
+
+
+
+
+<hr>
+<p>A successful request will provide a 201 response.</p>
+<pre><code><span class="comment">//Sample Header Response</span>
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store
+Last-Modified: Tue, 4 Jun 2013 12:00:00 GMT
+Expires: Wed, 5 Jun 2013 08:00:00 GMT
+Content-Type: application/json;charset=utf-8
+Date: Tue, 4 Jun 2013 12:00:00 GMT
+
+<span class="comment">//Sample payload response</span>
+none
+</code></pre>
+
 
 
 
@@ -136,6 +147,10 @@ Location: https://api.zatar.com/v1/invitetokens/2G03MOD1J6ENBZ1H
    "token":"05fc0f77-3c2f-4565-88a4-8bb340b2427z"
 }
 </code></pre>
+
+
+
+
 <hr>
 <p>Verify that an invitation token is valid by performing an HTTP GET.</p>
 <pre><code>GET ../v1/authentokens/{YOUR AUTHENTICATION TOKEN}
