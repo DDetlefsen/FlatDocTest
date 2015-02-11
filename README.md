@@ -118,7 +118,7 @@ Cache-Control: no-cache,no-store
 Date: Tue, Jun 4 2013 12:00:00 GMT
 Expires: Wed, Jun 5 2013 12:00:00 GMT
 Location: https://api.zatar.com/v1/invitetokens/2G03MOD1J6ENBZ1H
- 
+
 <span class="comment">//Sample payload response
 //token is the invitation token created by the request
 //expires is the value when the invitation token expires</span>
