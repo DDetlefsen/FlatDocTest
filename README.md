@@ -157,12 +157,6 @@ none
 <h3 id="client-application-avatar-profiles">Avatar Profiles</h3>
 <h3 id="client-application-events">Events</h3>
 <h3 id="client-application-notifications">Notifications</h3>
-
-
 <h2 id="client-application-avatars">Avatars</h2>
 <h3 id="client-application-avatar-history">Avatar History</h3>
-<<<<<<< HEAD
 <h3 id="client-application-jobs">Jobs</h3>
-=======
-<h3 id="client-application-jobs">Jobs</h3>
->>>>>>> FETCH_HEAD
