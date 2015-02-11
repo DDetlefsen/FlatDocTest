@@ -1,4 +1,4 @@
-<h1 id="client-appliation-interface">Client Application Interface</h1>
+<h1 id="client-appliation-interface">Client Application Interfaces</h1>
 <h1 id="client-application-introduction">Introduction</h1>
 <p>There are a number of API calls available, which are summarized here, and described in more detail below.</p>
 
@@ -110,7 +110,6 @@ none
    "world": "https://api.zatar.com/v1/worlds/1234567890ABCDEF"
 }
 </code></pre>
-aasdfasdf
 <hr>
 <p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
