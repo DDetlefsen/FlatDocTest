@@ -1,34 +1,37 @@
-
 <!doctype html>
+<!--
+
+  Instructions:
+
+  - Save this file.
+  - Replace "USER" with your GitHub username.
+  - Replace "REPO" with your GitHub repo name.
+  - Replace "Your Project" with your project name.
+  - Upload this file (or commit to GitHub Pages).
+
+  Customize as you see fit!
+
+-->
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset='utf-8'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Zatar Developer Documentation</title>
+  <title>Your Project</title>
 
-  <!-- jQuery -->
-  <script src="http://docs.spark.io/assets/js/jquery-1.11.1.min.js"></script>
+  <!-- Flatdoc -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js'></script>
+  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js'></script>
 
-  <!-- Let me embed vines -->
-  <script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="http://zatar.com/sites/all/themes/zatar/favicon.ico" type="image/x-icon">
-
-  <!-- Vendor theme mods -->
-  <script src="http://docs.spark.io/assets/js/jquery-styling.js"></script>
-  <script src="http://docs.spark.io/assets/js/prettify.js"></script>
-  <!--<script src='http://docs.spark.io/assets/js/scrollspy.js'></script> -->
-
-  <!-- Spark theme mods -->
-  <link href="http://docs.spark.io/assets/css/style.css" rel="stylesheet">
-  <script src="http://docs.spark.io/assets/js/animated-core.js"></script>
+  <!-- Flatdoc theme -->
+  <link  href='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/style.css' rel='stylesheet'>
+  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/script.js'></script>
 
   <!-- Meta -->
-  <meta content="Zatar" property="og:title">
-  <meta content="Documentation for Zatar" name="description">
+  <meta content="Your Project" property="og:title">
+  <meta content="Your Project description goes here." name="description">
 
   <!-- Initializer -->
   <script>
@@ -36,109 +39,48 @@
       fetcher: Flatdoc.github('DDetlefsen/FlatDocTest')
     });
   </script>
-
 </head>
-<body role="flatdoc">
+<body role='flatdoc'>
 
-  <div id="docs">
-    <div class="header">
-      <div class="left">
-        <a href="https://www.zatar.com">
-          <img src="http://cloudfront.zatar.com/sites/all/themes/zatar/images/logo_black.png" id="logo">
-        </a>
-      </div>
-      <div class="right">
-        <a href="http://docs.spark.io/assets/docs.zip" class="icon"><i class="icon ion-arrow-down-a"></i></a>
-        <a href="http://www.github.com/spark/docs" class="icon"><i class="icon ion-social-github"></i></a>
-        <a href="https://github.com/spark/docs/edit/master/src/content/api.md" class="button">Edit this page</a>
-      </div>
+  <div class='header'>
+    <div class='left'>
+      <h1>Your Project</h1>
+      <ul>
+        <li><a href='https://github.com/DDetlefsen/FlatDocTest'>View on GitHub</a></li>
+        <li><a href='https://github.com/DDetlefsen/FlatDocTest/issues'>Issues</a></li>
+      </ul>
+    </div>
+    <div class='right'>
+      <!-- GitHub buttons: see http://ghbtns.com -->
+      <iframe src="http://ghbtns.com/github-btn.html?user=DDetlefsen&amp;repo=FlatDocTest&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
 
+  <div class='content-root'>
+    <div class='menubar'>
 
-  <div class="content-root" data-spy="scroll" data-target="#toc">
-    <div class="menubar">
-      <div class="menu section" role="flatdoc-menu">
-        <ul>
-          <li><a href="../start" class="level-0 ">Getting started</a></li>
-          <li><a href="../avatars" class="level-0 ">Avatars</a></li>
-          <li><a href="../worlds" class="level-0 ">Worlds</a></li>
-          <li><a href="../devices" class="level-0 ">Device Connections</a></li>
-          <li><a href="../client_api" class="level-0 active">Client Applications</a></li>
-        </ul> 
-      </div>
-      <div class="menu section" role="flatdoc-menu">
-        <ul id="toc">
-        <li id="spark-cloud-api-item" class="level-1">
-          <a id="spark-cloud-api-link" href="#client-application-introduction" class="level-1">Client Applications</a>
-        </li>
-        <li id="introduction-item" class="level-1">
-          <a id="introduction-link" href="#client-application-http-rest-detials" class="level-1">HTTP REST Details</a>
-        </li>
-        <li id="introduction-item" class="level-1">
-          <a id="introduction-link" href="#client-application-authorization-tokens" class="level-1">Authorization Tokens</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-get-authentication-token" class="level-2">Get a new token</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#" class="level-2">Verify existing token</a>
-        </li>
-        <li id="introduction-item" class="level-1">
-          <a id="introduction-link" href="#client-application-invitation-tokens" class="level-1">Invitation Tokens</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#" class="level-2">Make a new invitation token</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#" class="level-2">Verify an invitation token</a>
-        </li>
-        <li id="introduction-item" class="level-1">
-          <a id="introduction-link" href="#client-application-worlds" class="level-1">Worlds</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-avatar-definitions" class="level-2">Avatar Definitions</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-3">
-          <a id="introduction-list-devices-link" href="#client-application-firmwares" class="level-3">Firmwares</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-avatar-groups" class="level-2">Avatar Groups</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-avatar-profiles" class="level-2">Avatar Profiles</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-events" class="level-2">Events</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-notifications" class="level-2">Notifications</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-1">
-          <a id="introduction-list-devices-link" href="#client-application-avatars" class="level-1">Avatars</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-avatar-history" class="level-2">Avatar History</a>
-        </li>
-        <li id="introduction-list-devices-item" class="level-2">
-          <a id="introduction-list-devices-link" href="#client-application-jobs" class="level-2">Jobs</a>
-        </li>
-        </ul>
-      </div>
-      <div role="flatdoc-content" class="content"></div>
-    </div>
+
+        <div class="menu section" role="flatdoc-menu">
+          <ul>
+            
+              <li><a href="../start" class="level-0 ">Getting started</a></li>
+            
+              <li><a href="../avatars" class="level-0 ">Avatars</a></li>
+
+              <li><a href="../worlds" class="level-0 ">Worlds</a></li>
+            
+              <li><a href="../devices" class="level-0 ">Device Connections</a></li>
+            
+              <li><a href="../client_api" class="level-0 active">Client Applications</a></li>
+            
+          </ul>
+        </div>
+
+
+
+
+    <div role='flatdoc-content' class='content'></div>
   </div>
-
-
-
-
-
-
-
-
-
-  <!-- Custom -->
-  <script src="http://docs.spark.io/assets/js/docs.js"></script>
 
 </body>
 </html>
