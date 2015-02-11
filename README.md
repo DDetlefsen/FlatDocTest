@@ -101,6 +101,7 @@ none
 <hr>
 <p>Create a new invitation token by doing an HTTP POST.</p>
 <pre><code>POST ../v1/invitetokens?token=YOUR_USER_TOKEN
+   
 <span class="comment">//Sample payload
 //email is the email address of the person whom you wish to recieve your invitation
 //world is the URI of the world you wish to create an invitation for</span>
