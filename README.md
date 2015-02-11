@@ -126,10 +126,6 @@ Location: https://api.zatar.com/v1/invitetokens/2G03MOD1J6ENBZ1H
    "token":"05fc0f77-3c2f-4565-88a4-8bb340b2427z"
 }
 </code></pre>
-
-
-
-
 <hr>
 <p>Verify that an invitation token is valid by performing an HTTP GET.</p>
 <pre><code>GET ../v1/authentokens/{YOUR AUTHENTICATION TOKEN}
@@ -150,8 +146,6 @@ Expires: Tue, Jun 4 2013 18:00:00 GMT
 none
 </code></pre>
 <hr>
-
-
 <h2 id="client-application-worlds">Worlds</h2>
 <h3 id="client-application-avatar-definitions">Avatar Defintiions</h3>
 <h4 id="client-application-firmwares">Firmwares</h4>
