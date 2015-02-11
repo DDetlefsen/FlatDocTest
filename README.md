@@ -99,18 +99,7 @@ none
 
 
 
-<hr>
-<p>Create a new authentication token by doing an HTTP POST.</p>
-<pre><code>POST ../v1/authentokens
 
-<span class="comment">//Sample payload
-//email is the email address of the existing Zatar user creating the token
-//password is the password of the existing Zatar user creating the token</span>
-{
-   "email":"teamzatar@zatar.com",
-   "password":"ZatarTeam&1"
-}
-</code></pre>
 
 
 
