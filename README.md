@@ -1,4 +1,4 @@
-<h1 id="client-appliation-interface">Client Application Interfaces</h1>
+<h1 id="client-appliation-interface">Client Application Interface</h1>
 <h1 id="client-application-introduction">Introduction</h1>
 <p>There are a number of API calls available, which are summarized here, and described in more detail below.</p>
 
