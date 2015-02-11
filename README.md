@@ -108,27 +108,6 @@ none
    "world": "https://api.zatar.com/v1/worlds/1234567890ABCDEF"
 }
 </code></pre>
-
-
-
-
-<hr>
-<p>A successful request will provide a 201 response.</p>
-<pre><code><span class="comment">//Sample Header Response</span>
-HTTP/1.1 200 OK
-Cache-Control: no-cache, no-store
-Last-Modified: Tue, 4 Jun 2013 12:00:00 GMT
-Expires: Wed, 5 Jun 2013 08:00:00 GMT
-Content-Type: application/json;charset=utf-8
-Date: Tue, 4 Jun 2013 12:00:00 GMT
-
-<span class="comment">//Sample payload response</span>
-none
-</code></pre>
-
-
-
-
 <hr>
 <p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
