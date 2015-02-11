@@ -110,20 +110,6 @@ none
    "world": "https://api.zatar.com/v1/worlds/1234567890ABCDEF"
 }
 </code></pre>
-
-
-
-<span class="comment">//Sample payload
-//email is the email address of the existing Zatar user creating the token
-//password is the password of the existing Zatar user creating the token</span>
-{
-   "email":"teamzatar@zatar.com",
-   "password":"ZatarTeam&1"
-}
-</code></pre>
-
-
-
 <hr>
 <p>A successful request will provide a 201 response.</p>
 <pre><code><span class="comment">//Sample Header Response</span>
