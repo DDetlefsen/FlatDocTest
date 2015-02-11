@@ -62,7 +62,7 @@ Last-Modified: Tue, 4 Jun 2013 18:00:00 GMT
 Expires: Wed, 5 Jun 2013 06:00:00 GMT
 Content-Type: application/json;charset=utf-8
 Date: Thu, 4 Jun 2013 18:00:00 GMT
- 
+
 <span class="comment">//Sample payload response
 //token is the created authentication token
 //href is the URI of the user who owns that authentication token
@@ -89,7 +89,7 @@ Last-Modified: Tue, 4 Jun 2013 12:00:00 GMT
 Expires: Wed, 5 Jun 2013 08:00:00 GMT
 Content-Type: application/json;charset=utf-8
 Date: Tue, 4 Jun 2013 12:00:00 GMT
- 
+
 <span class="comment">//Sample payload response</span>
 none
 </code></pre>
