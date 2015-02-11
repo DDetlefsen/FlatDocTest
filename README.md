@@ -161,4 +161,8 @@ none
 
 <h2 id="client-application-avatars">Avatars</h2>
 <h3 id="client-application-avatar-history">Avatar History</h3>
+<<<<<<< HEAD
 <h3 id="client-application-jobs">Jobs</h3>
+=======
+<h3 id="client-application-jobs">Jobs</h3>
+>>>>>>> FETCH_HEAD
